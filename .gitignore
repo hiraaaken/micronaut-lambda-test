@@ -12,6 +12,7 @@
 
 # Package Files #
 *.jar
+!demo/gradle/wrapper/gradle-wrapper.jar
 *.war
 *.nar
 *.ear
@@ -25,3 +26,8 @@ replay_pid*
 
 # Kotlin Gradle plugin data, see https://kotlinlang.org/docs/whatsnew20.html#new-directory-for-kotlin-data-in-gradle-projects
 .kotlin/
+
+docs/
+
+# コンテナから取り出したビルド成果物の置き場
+.artifacts/

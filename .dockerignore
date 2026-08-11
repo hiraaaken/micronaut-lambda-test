@@ -1,0 +1,16 @@
+.git/
+.gitignore
+
+docs/
+*.md
+
+demo/build/
+demo/.gradle/
+demo/.micronaut/
+
+.idea/
+*.iml
+.vscode/
+
+.DS_Store
+Thumbs.db

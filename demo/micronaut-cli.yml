@@ -1,0 +1,6 @@
+applicationType: function
+defaultPackage: com.example
+testFramework: kotest
+sourceLanguage: kotlin
+buildTool: gradle_kotlin
+features: [app-name, aws-lambda, aws-lambda-events-serde, aws-lambda-handler-function, gradle, h2, http-client-test, jdbc-hikari, jooq, kotest, kotlin, ksp, logback, micronaut-build, micronaut-configuration-validation-gradle-plugin, properties, readme, serialization-jackson, shade, snapstart, validation, x86]
