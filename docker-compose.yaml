@@ -7,6 +7,9 @@ services:
       args:
         USER_UID: ${USER_UID:-1000}
         USER_GID: ${USER_GID:-1000}
+    environment:
+      DATASOURCES_DEFAULT_USERNAME: ${DB_USER:-notes}
+      DATASOURCES_DEFAULT_PASSWORD: ${DB_PASSWORD:-notes}
     working_dir: /app
     mem_limit: 4g
     volumes:
@@ -16,9 +19,28 @@ services:
       - gradle-project-cache:/app/.gradle
     tty: true
     stdin_open: true
+  
+  postgres:
+    image: postgres:18-alpine
+    container_name: micronaut-lambda-postgres
+    environment:
+      POSTGRES_DB: ${DB_NAME:-notesdb}
+      POSTGRES_USER: ${DB_USER:-notes}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-notes}
+    volumes:
+      - postgres-data:/var/lib/postgresql
+      - ./demo/src/main/resources/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   gradle-user-home:
   build-output:
   gradle-project-cache:
+  postgres-data:
 
