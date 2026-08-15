@@ -67,6 +67,10 @@ micronaut {
     }
 }
 
+allOpen {
+  preset("micronaut")
+}
+
 
 
 
@@ -80,3 +84,5 @@ tasks.withType<AbstractTestTask>().configureEach {
 tasks.shadowJar {
     archiveFileName.set("function.jar")
 }
+
+
